@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[a4paper,12pt]{article}
 
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
@@ -13,6 +13,8 @@
 \usepackage[colorlinks=false, hidelinks]{hyperref} 
 \usepackage{chicago} 
 \geometry{margin=1in}
+\usepackage{setspace}
+\doublespacing
 
 \title{Master Thesis}
 \author{U Tokyo GSE 29236037 Dohya YAMAMOTO}
@@ -28,32 +30,411 @@
 
 
 \section{Introduction}
+This paper aims to analyze the mechanism of financial crises and their effect on the economy, especially in the long-run. To achieve these goals, I provide a theoretical framework with which we can demonstrate endogenous economic growth driven by firms' innovation activities and the energence of Non-performing loans. \par
+In general, we find several key connections between finance and economic growth. Especially, if we think about innovation-led growth as a way to explain endogenous economic growth, which was first proposed by Aghion and Howitt (1992) and Grossman and Helpman (1991), finance plays a crucial role. This is because innovation necessitates R\&D investment well before its benefits are realized in the future. Therefore, we can easily imagine that financial crises also have a large effect on economic growth. In fact, much empirical and theoretical research has shown that financial crises have a negative effect on economic growth, and this effect may persist for several years after the crisis. This is one of the key relations between crises and growth and serves as a primary reason to analyze the phenomena of financial crises in an economic growth framework. \par
+The economic growth framework I use has two main features. Firstly, in this model, financial crises can occur endogenously. If we want to analyze only the effect of financial crises, it is sufficient to introduce exogenous (relatively large) negative shocks to the economy and see the response. In fact, some existing research conducts the analysis in this way. However, this paper is focused on the endogenous mechanisms of crises. This is motivated by the fact that many financial crises are preceded by booms in the economy. Especially, Ivashina et al. (2024) show that corporate debt booms are followed by financial crises, and that these booms are a strong predictor of crises. From these facts, I hypothesise that firms' behavior during a boom are strongly relevant to the occurrence of financial crises. Following on from this hypothesis, I try to construct a theoretical model to explain firms' investment decisions which may cause booms and which may lead to busts and thus financial crises in the general equilibrium model, based on the rational behavior of firms and households. \par
+Secondly, this paper employs an endogenous growth model with creative destruction to analyze the long-run effects of crises. While it is obvious by definition that financial crises have negative impacts on the economy, some empirical papers such as Reinhart and Rogoff (2009) show that financial crises cast a long shadow on the economy in the long-run. Meza and Quintin (2007) and Pratap and Urrutia (2012) argue that these persisting effects occur through a downturn in productivity growth and innovation. To best understand and demonstrate the role of this channel on the long-run effect of crises, an endogenous growth framework appears to be the most appropriate. Furthermore, I include the creative destruction first proposed by Klette and Kortum (2004) in my model. Due to the features of creative destruction, firms can be affected by other firm's innovation activities and this mutual negative effect can generate the situation of overinvestment in a boom. In addition, Klette and Kortum (2004) allow for heterogeneity of firms with a tractable model. These features allow us to analyze the heterogenous responses of firms and the creation of non-performing loans (NPL) which have a significant role during a crisis.\par
+In summary, this research combines the innovation-led endogenous growth model with a model for financial crises by introducing financial frictions. I introduce the NPL into the model based on Klette and Kortum (2004) with some new settings. These settings keep the model tractable and explain how NPLs affect the mechanisms of financial crises. \par
+The rest of the paper is organized as follows. In Section 2, I provide a literature review. In Section 3, I present the model. In Section 4, I analyze the equilibrium of the model. In Section 5, I conduct the comparative statics and the numerical analysis. In Section 6, I conclude the paper.
+
+\section{Literature Review}
+\subsection{Mechanism of Crises}
+There exists a large amount of literature studying the mechanisms of financial crises. Diamond and Dybvig (1983) characterize the role of the banking sector in an economy and show that while banking can improve welfare in one equilibrium, self-fulfilling bank-runs can happen without any technological shock. Using a model with asymmetric information, Bernake, Gertler and Gilchrict (1999) introduce the costly verification mechanism into a macroeconomic general equilibrium model and show the propagation of negative demand shocks through the financial accelerator, which is the mechanism where reductions in demand reduce the value of assets and lead to reduced investment through external finance premia. Reduced investment further decreass demand and the cycle continues, amplifying the initial negative shock and potentially leading to financial crises. Kiyotaki and Moore (1997) provide a model in which negative shocks are propagated through collateral value decline, focusing on the role of land as a collateral. This financial accelarator also explains the occurrence of crises like Bernake, Gertler and Gilchrict (1999), but the key assumption is different. In this model, lenders can not force borrowers to repay and thus collateral is needed, with is value important in the context of collateral constraints. \par
+Doe to these financial frictions, banks often have to keep leverage. In fact, in the real world economy, several regulations are imposed on banks' leverage ratios, such as Basel. Then, declines in assets held by the bank worsen the bank's balance sheet forcing the bank to improve their leverage ratio by reducing lending. As a macroeconomic model which introduces this mechanism explicitly, Gertler and Karadi (2011) theoretically show that the negative shock is propagated through the bank capital channel. Gertler and Kiyotaki (2015) explain bank-runs through the channel in the economy with direct and intermediate finance, and the effect of such bank-runs. \par
+Mendoza (2010) explains the phenomena of Sudden Stops in the dynamic stochastic general equilibrium (DSGE) business cycle model. Sudden Stops are defined by Mendoza (2010) as having three characteristics: (i) reversals of international capital flows, reflected in sudden increases in net exports and the current account, (ii) declines in production and absorption, and (iii) corrections in asset prices. Sudden Stops often happen in an economy emerging from a financial crash and thus are important when discussing financial crises. In the model, collateral constraints occasionally bind due to high leverage ratios and these binding constraints lead to sudden stop through two types of credit channels, which are increases in financing premia and debt-deflation mechanism. Debt-deflation is caused by fire sales which happen when agents liquidate their assets due to the constraint binding. Fire sales lead to declines in the price of assets and further tighten the constraint. Fire sales are also another key issue of crises and are studied by several other papers (e.g. Kilenthong and Townsend, 2021.)\par
 
 
+\subsection{Boom-busts and Financial Crises}
+This paper is strongly motivated by the empirical findings that financial crises are associated with economic booms and busts. It is usually said that financial crises are preceded by booms in investment. One of the most famous examples is the Global Financial Crisis from 2007 to 2009. Before the crisis arised, the United States had experienced a housing market boom and after its bust, it turned out to be a bubble. This boom was in household debt and many empirical papers point out that household debt booms precede financial crises. For example, Mian et al. (2017) use panel data for 30 countries from 1960 to 2012 and show that an increase in the ratio of household debt to GDP predicts lower growth and high unemployment in the medium run. \par
+However, Ivashina et al. (2024) point out sharp increase in corporate debt just before these crises. Their work focuses on corporate debt levels before and after banking crises and show that firm debt accounts for about 2/3 of the growth in credit expansion in the three years before a crisis. They also find that a large part of the credit crunch and NPL after crises are concentrated on firm debt which implies that firm debt characteristics such as dependence on collateral and dispersion across sectors affect the probability and the severity of the crises. These findings motivate me to analyze crises with a framework in which we can better see firms behavior.\par
 
+\subsection{Crises and Growth}
+Although it is natural that financial crises have immediate negative effects on the economy, some empirical papers show the relatively long or persistent effects of crises. Using panel data from emerging and developing countries, Cerra and Saxena (2008) show that the financial crises have negative impacts on output and this effect is persistent, while Reinhart and Rogoff (2009) also find the same result. In addition, Hardy and Sever (2021) find a large and long-lasting impact of financial crises on innovation, which is the origin of economic growth. As well as them, Meza and Quintin (2007) and Pratap and Urrutia (2012) empirically show that crises cause a decline in productivity growth, causing persistent negative effects on output.\par
+Because of these findings, it is important to analyze the mechanism of the long-run effect of crises. One way to do that is to adopt a model of economic growth as a theoretical framework. One of the major strands of endogenous growth models originated from Romer (1990), which explain the mechanisms of technological change and growth. Another stream of endogenous growth models are those with creative destruction, which is often called Schumpeterian growth, originating from Aghion and Howitt (1992) and Grossman and Helpman (1991). This paper is based on the prominent work on the creative destruction framework by Klette and Kortum (2004). These models focus on the type of innovation where newly innovated technologies make old technologies obsolete and thus destroyed. In these models, firms have an incentive to innovate and create new technologies to obtain the right to produce, taking away the position to produce from other firms and leading to technological progress.\par
+Many theoretical papers in the literature bridge these endogenous growth model and the analysis of financial crises. The following three papers are based on Klette and Kortum (2004), and analyze how the effect of crises are amplified through innovation. Ates and Saffie (2021) intoroduce additional heterogeneity in firm productivity and analyze the sudden stop in Chile triggered by Russian sovereign default in 1998. In the model, there is a decline in both the number of entrants and innovation in the period of credit shortage caused by the sudden stop, but the average quality of entrant rises because of the selection effect. In their quantitative analysis, they show that the negative effect of the crisis exceeds the benefits from the rise in entrant quality, causing long-lasting downturns in the economy. Benguria et al. (2022) introduce the factor of international trade by setting export and import product lines in the model. Their work also targets the Chilean sudden stop in 1998 and quantitatively evaluates the model with data. In the model, exchange rate depreciation makes firms shift their product portfolio towards export lines, and this explains the recovery in the aftermath of crises. Kalmli-Ozcan and Saffie (2023) also analyze the effect of crises on firm dynamics and growth with a simple model based on Klette and Kortum (2004). In their model, while aggregate productivity shocks do not generate the long-lasting impact, negative interest rate shock generate hysteresis effect through the households' stochastic discount factor. \par
+Aside from firm heterogeneity, Guerron-Quintana, Hirano and Jinnai (2023) provide a framework to analyze boom-busts and endogenous growth. They focus on recurrent asset price bubbles and the fact that bubbles lead towards crises but also enhance economic growth in the boom period. To introduce bubbles into the growth model, they employ a regime-switching framework, which consists of "fundamental" and "bubbly" regimes. In the model bubbles have the two roles: one is to enhance the capital accumlation by improving funding problem, which leads to economic growth, and the other is to crowd out the investment due to the anticipation of bubbles collapsing and the emergence of future bubbles by households. As a consequence, they quantitatively show that the IT bubble and housing bubble in the US brought a permanent rise in the level of the economy, but that it was relatively low when compared to when there is no expectation of bubbles ("fundamental" regime.) \par
+In addition, some papers do not adopt growth models but characterize crises separately from ordinary reccessions. Other theoretical papers do not characterize crises, but instead consider the negative movements of some economic variables as a part of a business cycle or fluctuations in the economy, sometimes using a endogenous growth framework. Barlevy (2004) argues that negative shocks can affect the economic welfare by reducing the growth rate of consumption under the AK type of endogenous growth model. Comin and Gertler (2006) study the medium-term business cycles generated by more frequent fluctuations and show that the fluctuations are more volatile and persistent than measurements made by prior literature. They demonstrate that high-frequency fluctuations in innovation technology generate the low-frequency output cycles through endogenous technological change, under a Romer (1990) framework with a few relaxed settings.\par
+
+\section{Model}
+In this section, I provide the settings of theoretical framework and the result of optimization by the agents. In the closed economy, there are representative households, final good producers, intermediate good producers and entrants. Household choose their consumption and savings to maximize their lifetime utility and there is no labor inputs. Final goods producers aggregate the intermediate goods and produce the final goods in perfect competition. Intermediate goods firms produce the intermediate goods and invest in innovation. Entrants also invest in innovation and try to enter the intermediate production. The model is based on Klette and Kortum (2004) with the discrete time setting. 
+\subsection{Household}
+Infinitely-lived representative household maximizes the following Constant Relative Risk Aversion lifetime utility
+\begin{align}
+    U = \sum_{t=0}^\infty \frac{\beta^t C_t^{1-\gamma}}{1-\gamma}
+\end{align}
+and the budget constraint in each period $t$ is 
+\begin{align}
+    Y_t + T_t = C_t + K_{t+1}.
+\end{align}
+$T$ is the transfer from the intermediate firms. $Y$ is the output of the final goods and $K$ is the capital stock. As a result of the optimazation, we obtain the Euler equation
+\begin{align}
+    \beta ( 1+r^h) = \bigg(\frac{C_t}{C_{t+1}}\bigg)^\gamma.
+\end{align}
+
+\subsection{Final Good Producers}
+Final good producers aggregate the intermediate goods and produce the final goods in perfect competition. In this economy, there are unit mass of the types of differentiated imtermediate goods. The Cobb-Douglas production function is
+\begin{align}
+    Y_t = \exp\bigg(\int_0^1 \ln q_{i,t}^\alpha y_{i,t}^{1-\alpha} di\bigg).
+\end{align}
+$y_i$ is the amount of the intermediate goods index by type $i$ and $q_i$ is the quality of the product. Note that $0<\alpha<1$. Final good producers maximize profit 
+\begin{align}
+    \Pi_t^y = \exp\bigg(\int_0^1 \ln q_{i,t}^\alpha y_{i,t}^{1-\alpha} di\bigg) - \int_0^1 p_i y_{i,t} di.
+\end{align}
+where the price of the final good is normalized to 1. Then, the demand function for each intermediate good can be obtained from the first order condition of the profit maximization as
+\begin{align}
+    y_{i,t} = \frac{\alpha Y_t}{p_{i,t}}.
+\end{align}
+As we can see above, the demand of each intermediate good is independent of its quality. 
+
+\subsection{Intermediate Good Producer}
+Intermediate good producers make two types of decisions; production and innovation in each period. As explained in the previous section, there is a unit mass of differentiated intermediate goods in this economy. To produce the good of type $i$, the firm needs to have the patent of the good and the patent is obtained only by the innovation. This setting allows firms to operate on multiple product lines and allows for one line to potentially be operated on by multiple firms. However, the latter should not be the case as a result of firms' behavior in equilibrium. If a firm succeeds in innovation, it obtains the patent with the highest quality on the randomly chosen product line. The quality is determined by the previous highest quality of the line improved by the innovation step size $\sigma$. Lastly we assume that firms on a product line compete a la Bertrand. 
+
+\subsubsection{Production}
+First, we look at the production decision. The production function of good $i$ is 
+\begin{align}
+    y_{i,t} = k_{i,t}.
+\end{align}
+The only input to intermediate production is capital $k$. In each product line, multiple firms have the patent to produce the goods but their quality of production must be different. Thus, the firm with the highest quality patent can put a lowest quality-adjusted price on the good because the marginal cost of production is the same for all of the firms. Since we assume they try to sell their products to final producers in Bertrand competition, the firm which has the highest quality of the product can put the enough low price to kick out other firms and can be a sole producer of the goods.\par
+Next we consider the pricing problem of the sole producer firm. Although they have the highest quality, they can not set the price freely. In other words, if the price set by the firm is too high, the second (and less) highest quality firm can sell the product at a lower price. Then the price by the sole producer is constrained by the quality adjusted price of the second highest quality firm. The lowest price at which the firms can sell the product with non-negative profit is equal to the marginal cost. Then if we denote the marginal cost of production as $r+\delta$, which is the cost of interest payment and capital depreciation, the lowest quality-adjusted price of the second highest quality firm can be written as 
+\begin{align}
+    \frac{p_i^{2nd}}{(q_i^{2nd})^\alpha} = \frac{r+\delta}{(q_i^{2nd})^\alpha}.
+\end{align}
+ Therefore, the price of sole producer is constrained as
+ \begin{align}
+    \frac{p_i}{q_i^\alpha} \leq \frac{r+\delta}{(q_i^{2nd})^\alpha}.
+ \end{align}
+Since the profit of the firm from each product line can be written as
+\begin{align}
+   \notag \pi_{i,t} &= p_{i,t} y_{i,t} - (r+\delta) y_{i,t}\\
+   &= \alpha Y_t - (r+\delta)  \frac{\alpha Y_t}{p_{i,t}},
+\end{align}
+using the demand function from the final good producer in a context of monopolistic competition. The optimal price should be the highest price which satisfies the constraint by the second and then, we can rewrite the relation between the first and the second highest quality by innovation step size. The optimal price of the sole producer is 
+\begin{align}
+    p_{i,t} = (r+\delta)\Big(\frac{q_{i,t}}{q_{i,t}^{2nd}}\Big)^\alpha = (1+\sigma)^\alpha(r+\delta).
+\end{align}
+Note that the price is also independent of the level of the quality. The amount of intermediate goods produced and the profit are
+\begin{align}
+    y_{i,t} = \frac{\alpha Y_t}{(1+\sigma)^\alpha(r+\delta)},\\
+    \pi_{i,t} = \frac{(1+\sigma)^\alpha-1}{(1+\sigma)^\alpha}\alpha Y_t .
+\end{align}
+
+\subsubsection{Innovation}
+Next we see the innovation decision. In each period, firms invest in R\&D and obtain new patents with the quality improved by the innovation step size $\sigma$ if they are successful. The product line obtained is determined randomly in from the product space except for the lines which are already operated by the firm. As an investment in R\&D, only capital is used as well as production and the production function of the innovation for the firm with $n$ operating product lines is
+\begin{align}
+    \iota_t(n) = \frac{(k_t^R/Q_t)^sn^{1-s}}{\varphi}.
+\end{align}
+$\iota$ is the probability of successful innovation. $Q_t$ is the aggregate level of productivity, which means that the higher the productivity today, the more difficult to innovate. It is useful to rewrite the cost of innovation as a function of successful probability. The necessary amount of capital to achieve the probability of success $\iota$ is
+\begin{align}
+    c_t(\iota_t, n) = \Big(\frac{\iota_t\varphi}{n^{1-s}}\Big)^\frac{1}{s} Q_t.
+\end{align}
+Note that we ignore the case of multiple acquisitions of a single line in one period. \par
+So far we have seen the decision of the firm with $n\geq 1$ product lines. In the original model by Klette and Kortum (2004), the firm exits the economy when it loses the ability to operate any line at all ($n=0$). However, in this model, we allow the firm to stay in the economy and to invest in R\&D without any production only once after they lose all lines. In this model, innovation itself does not generate any direct profit or sales, and thus the firms which operate the product lines repay the cost of innovation by the sales of production. Firms with no lines cannot repay the cost. As an extension, we assume that firms with no product lines can invest in R\&D and are allowed to repay the cost at the next period, in which they would have a patent and operate a line if their innovation is successful. If their innovation is unsuccessful, they finally exit the economy but the lenders cannot force them to repay the cost already paid. This setting explains the generation of NPL in the economy. The innovation production function and the cost function for the firms with no line are
+\begin{align}
+    \iota_t^0  &= \frac{(k_t^0/Q_t)^{s^0}}{\varphi^0},\\
+    c^0_t(\iota^0) &= (\iota_t^0\varphi^0)^{s^0} Q_t.
+\end{align}
+\par
+Then, we obtain the following value function of the firm. For the firm with $n\geq 1$ product lines, 
+\begin{align}
+    V_t(n) &= \max_{\iota_t}\bigg\{ \pi_t n - (r_t+\delta)\big(\frac{\iota_t\varphi}{n^{1-s}}\big)^{1/s} Q_t \notag\\
+    &+ \beta \Big\{\iota_t (1-n\Delta_t)V_{t+1}(n+1) \notag\\
+    &+ (1-\iota_t)n\Delta_t V_{t+1}(n-1) + \big[\iota_t n\Delta_t+(1-\iota_t)(1-n\Delta_t)\big]V_{t+1}(n) \Big\}
+    \bigg\}.
+\end{align}
+For the firm with no line, 
+\begin{align}
+    V_t(0) =\max_{\iota_t^o} \bigg\{\beta\Big(-(r^0_t+\delta)(r^0_{t+1}+\delta) (\iota_t^0 \varphi^0)^{1/s^0}Q_t + \iota_t^0(1+g_t)V_{t+1}(1)\Big)\bigg\} - T_t^0.
+\end{align}
+The last term on the right-hand side is the cost to stay in the economy without any production and must be adjusted to make $V(0) = 0$. This is an ad hoc assumption to keep the value function linear in $n$ and keep the model tractable.\par
+Lastly we exploit that $pi$ and $c(\iota)$ is linear in the output and the aggregate level of productivity, and guess the form of the value function as $V(n) = \nu n$, we can rewrite the value function with $n\geq 1$ as
+\begin{align}
+    \nu_t n &= \max_{\iota_t}\bigg\{ \pi_t n - (r_t+\delta)\big(\frac{\iota_t\varphi}{n^{1-s}}\big)^{1/s} Q_t \notag\\
+    &+ \beta (1+g_{t+1}) \Big\{\iota_t (1-n\Delta_t)(n+1)\nu_t \notag\\
+    &+ (1-\iota_t)n\Delta_t (n-1) \nu_t + \big[\iota_t n\Delta_t+(1-\iota_t)(1-n\Delta_t)\big]n\nu_t \Big\}
+    \bigg\}.
+\end{align}
+The optimal innovation is 
+\begin{align}
+    \iota_t(n) = \Big(\frac{s\beta (1+g_{t+1})\bar\nu_t}{(r_t+\delta)\varphi^{1/s}Q_t}\Big)^\frac{s}{1-s}n
+\end{align}
+plugging this into the guessed form of the value, we obtain
+\begin{align}
+    \nu_t n &= \bar{\pi}n -(r_t+\delta) \varphi^\frac{1}{s}\Big(\frac{s\beta (1+g_{t+1})\nu_t}{(r_t+\delta)\varphi^{1/s}Q_t}\Big)^\frac{1}{1-s}n \\
+    &+\beta (1+g_{t+1}) \bigg[\Big(\frac{s\beta (1+g)\nu_t}{(r+\delta)\varphi^{1/s}}\Big)^\frac{s}{1-s}n \nu_t + n\nu_t(1-\Delta_t)\bigg].
+\end{align}
+Thus the value is linear in $n$ and the guess is verified. Using $\nu_t$, we can express the optimal innovation of the firm with no line as
+\begin{align}
+    \iota_t^0 = \Big(\frac{(1+g_{t+1})\nu_t}{(r_t+\delta)(r_{t+1}+\delta)(\varphi^0)^{1/s^0}Q_t}\Big)^\frac{s^0}{1-s^0}.
+\end{align}
+
+\subsection{Entrant}
+Lastly we consider the problem of entrants. In this economy, there is a unit mass of entrants and they invest in R\&D to obtain the patent of production. As well as incumbents, the entrants can obtain the patent with the quality improved by the innovation step size $\sigma$ if they succeed in it. The cost function of innovation of the entrants is
+\begin{align}
+    c^e_t(\iota^e) &= (\iota_t^e\varphi^e)^{s^e} Q_t.
+\end{align}
+Then the value function of them can be written as
+\begin{align}
+    V_t^e = -(r_t+\delta)(\iota_t^e\varphi^e)^{1/s^e}Q_t + \beta (1+g_{t+1})\iota_t^e \nu_t
+\end{align}
+and the optimal innovation is
+\begin{align}
+    \iota_t^e = \Big(\frac{s^e\beta (1+g_{t+1})\nu_t}{(r_t+\delta)(\varphi^e)^{1/s}Q_t}\Big)^\frac{s^e}{1-s^e}.
+\end{align}
+
+\section{Equilibrium on BGP}
+In this section, I provide the solution of the variables in the equilibrium on the BGP. The detailed derivations are shown in the appendix. On the BGP, interst rate and the rate of creative destruction should be constant, and output, aggregate productivity,  capital and consumption grow at constant rate. \par
+Firstly, we characterize the creative destruction. The rate of creative destruction is
+\begin{align}
+    \Delta = \frac{\sum_{n=1}^\infty \iota(n)M(n)}{\sum_{n=1}^\infty M(n)}+ \iota^e + \iota^0 \frac{M(0)}{\sum_{n=1}^{\infty}M(n)}
+\end{align}
+where $M(n)$ is the mass of the firm with $n$ product lines. The steady state size distribution of the firm is calculated by the following equations.
+\begin{align}
+    \dot{M}(0) = (1-\iota(1))\Delta M(1) - M(0) = 0.
+\end{align}
+\begin{align}
+    \dot{M}(1) = \iota^0 M(0) + \iota^e+(1-\iota(2))2\Delta M(2)-\big(\iota(1)(1-\Delta)+ (1-\iota(1))\Delta \big)M(1) = 0.
+\end{align}
+and for $n\geq 2$,
+\begin{align}
+    \dot{M}(n) &= \iota(n-1)(1-(n-1)\Delta)M(n-1)\\
+    &+(1-\iota(n+1))(n+1)\Delta M(n+1) - (\iota(n)(1-n\Delta) + (1-\iota(n))n \Delta )M(n) =0.
+\end{align}
+\par
+From the Euler equation, we can obtain 
+\begin{align}
+    \beta (1+r^h) = (1+g)^\gamma.
+\end{align}
+From the production function of final goods and the demand for the intermediates, we characterize that
+\begin{align}
+    \frac{C_{t+1}}{C_t}  = \frac{Y_{t+1}}{Y_t} = \frac{K_{t+1}}{K_t}= \frac{Q_{t+1}}{Q_t} = 1+g
+\end{align}
+and the growth rate should be
+\begin{align}
+    g = (1+\sigma)\Delta.
+\end{align}
+This is one of the main results of this model. The growth rate of the economy is determined by the rate of creative destruction and the innovation step size. The growth rate is increasing in the innovation step size and the rate of creative destruction. This is because the higher the innovation step size, the higher the quality of the new product and the higher the rate of creative destruction, the more the firms are replaced by the entrants with the higher quality. \par
+In addition, we can characterize the quantity of NPL in the economy. From the definition of NPL, we can obtain the technology-adjusted amount of NPL as
+\begin{align}
+    NPL = (1-\iota^0)M(0) (\iota_t^0\varphi^0)^{s^0}.
+\end{align}
+Recalling that $M(0) = \Delta M(1)$ holds in the steady state, the high rate of creative destruction brings about a large amount of NPL in the economy. And considering $M(1)$, The high rate of entry brings the large mass of $n=1$ firms and also the high amount of NPL in the subsequent period. \par
+
+\section{Conclusion and Future Work}
+In this paper, I introduce the NPLs into the model by Klette and Kortum (2004), which can investigate endogenous growth, firm dynamics and innovation activities. As a result of the model, I show that the growth rate of the economy is increasing in the rate of creative destruction, which however also increases the amount of NPLs in the economy.  
+Next I will introduce the two factor to demonstrate crises by numerical calculation. First one is borrowing constraint. Celik (2023) introduce the borrowing constraint for intermediate firms with collateral constraint and keep the model tractable. Similarly, I will introduce the borrowing constraint for each intermediates by the value of the firm. In this constraint, the quantity of NPLs is relevant to the amount of caspital which firms can borrow. This is realistic because banks in the real economy often shrinks the size of thier balance sheets when the total asset value decrease. By this setting, we can replicate the propagation of negative effect and the occurence of crises. \par
+Secondly, I will introduce both negative and positive shocks to the technology. Even if a shock itself is positive, if firms sharply raise the investment in R\&D, the NPLs increase through creative destruction. This is specific feature of this model which can analyze booms before crises.\par
+To conduct these analyses, we have to solve and to simulate the model numerically. This is the future work of this research.
 
 \begin{thebibliography}{9}
     \item Aghion, P., Akcigit, U., and Howitt, P. 2014. "What do we learn from schumpeterian growth theory?" In Handbook of economic growth. Vol. 2. Edited by Aghion, P. and Durlauf, S.N., Elsevier.
     \item Aghion, P. and Howitt, P. 1992. “A Model of Growth Through Creative Destruction.” Econometrica 60(2): 323-351.
     \item Ates, S.T. and Saffie, F.E. 2021. "Fewer but Better: Sudden Stops, Firm Entry, and Financial Selection." American Economic Journal: Macroeconomics 13(3): 304-356.
     \item Barlevy, G. 2004. "The Cost of Business Cycles Under Endogenous Growth." American Economic Review 94(4): 964-990.
+    \item Bernanke BG
+    \item Benguria 2022
     \item Celik, M.A. 2023. "Creative Destruction, Finance, and Firm Dynamics." In The Economoics of Creative Destruction Edited by Akcigit, U. and Van Reenen, J., Harvard University Press.
     \item Cerra, V. and Saxena, S.C. 2008. "Growth Dynamics: The Myth of Economic Recovery." American Economic Review. 98(1): 439-457.
+    \item Comin Gertler 2006
     \item De Ridder, M. 2024. “Market Power and Innovation in the Intangible Economy.” American Economic Review 114(1): 99-251.
     \item Diamond, D.W. and Dybvig, P.H. 1983. “Bank Runs, Deposit Insurance, and Liquidity.” Journal of Political Economy 91(3): 401-419.
+    \item Getler Karadi 2011
+    \item Gertler Kiyotaki 2015
     \item Grossman G.M. and Helpman, E. 1991. “Quality Ladders in the Theory of Growth.” The Review of Economic Studies 58(1): 43-61.
+    \item Guerron 2023
+    \item Hardy and Server 2021
     \item Helpman, E. and Trajtenberg, M. 1998. "A time to sow and a time to reap: growth based on general purpose
 technologies." In General Purpose Technologies and Economic Growth. Edited by Helpman, E., MIT Press.
     \item Ivashina, V., Kalemli- Özcan, S., Laeven, L. and Müller, K. 2024. “Corporate Debt, Boom-bust Cycles, and Financial Crisis.” NBER Working Papers, Working Paper 32225.
     \item Kalemli- Özcan, S. and Saffie, F.S. 2023. "Finance and Growth; Firm Heterogeneity and Creative Destruction." In The Economoics of Creative Destruction Edited by Akcigit, U. and Van Reenen, J., Harvard University Press.
     \item Kalemli- Özcan, S., Leaven, L. and Moreno, D. 2018. "Debt overhang, rollover risk, and Corporate Investment: Evidence from European Crisis." NBER Working Papers, Working Paper 24555.
+    \item Kilenthong and Townsend 2021
     \item Kiyotaki, N. and Moore, J. 1997. “Credit Cycles.” Journal of Political Economy 105(2): 211-248.
     \item Klette, T.J. and Kortum, S. 2004. “Innovating Firms and Aggregate Innovation.” Journal of Political Economy 112(5): 986-1018.
+    \item Mendoza 2010
     \item Meza, F. and Quintin, E. 2007. "Factor Utilization and The Real Impact of Financial Crises. B.E. Journal of Macroeconomics 7(1): 1-41.
+    \item Mian et al 2017
     \item Pratap, S. and Urrutia, C. 2012. "Financial Frictions and Total Factor Productivity: According for the Real Effects of Financial Crises." Review of Economic Dynamics 15(3): 336-358
     \item Reinhart, C.M. and Rogoff, K.S. 2009. "The Aftermath of Financial Crises." American Economic Review 99(2): 466-472
     \item Romer, P.M. 1990. “Endogenous Technological Change.” Journal of Political Economy. 98(5): S71-102.
 \end{thebibliography}
+
+\clearpage
+\section*{Appendix}
+\subsection{Solution with Technology Adjusted Variables on BGP}
+\textbf{Final Good Producer}\\
+Final good producer maximizes the profit
+\begin{align}
+    \bar{\Pi}_t = \exp (\int_0^1 \ln \bar{q_i}^\alpha \bar{y_i}^{1-\alpha} di) -\int_0^1 p_i \bar{y_i} di.
+\end{align}
+The demand function for each intermediate good is 
+\begin{align}
+    \bar{y_i} = \frac{\alpha\bar{Y}}{p_i}.
+\end{align}
+\textbf{Intermediate Production}\\
+Intermediate goods producer maximize the profit from each line today in a Bertra1 competition.
+\begin{align}
+    p_i \bar{y_i} -(r+\delta)k_i = p_i \frac{\alpha\bar{Y}}{p_i} - (r+\delta)\frac{\alpha\bar{Y}}{p_i}\\
+    s.t. p_i \leq (1+\sigma)(r+\delta)
+\end{align}
+Then the optimal1 price and the optimal production should be
+\begin{align}
+    p_i = (1+\sigma)(r+\delta)
+\end{align}
+\begin{align}
+    \bar{y_i} = \frac{\alpha\bar{Y}}{(1+\sigma)(r+\delta)}.
+\end{align}
+And the profit is
+\begin{align}
+    \bar{p_i} = \frac{\sigma}{1+\sigma}\alpha\bar{Y}.
+\end{align}
+\textbf{Incumbent Innovation}\\
+The firms with $n$ product line solve the following Bellman equation
+\begin{align}
+    \bar{V}(n) = \max_{\iota}\bigg\{\bar{\pi} - (r+\delta)\big(\frac{\iota\varphi}{n^{1-s}}\big)^{1/s} + \beta (1+g)\Big\{\iota (1-n\Delta)\bar{V}(n+1) + (1-\iota)n\Delta \bar{V}(n-1) \\ 
+    + \big[\iota n\Delta+(1-\iota)(1-n\Delta)\big]\bar{V}(n) \Big\}
+    \bigg\}.
+\end{align}
+We guess thebform of $\bar{V}(n) =bar{\nu} n $ and the solution $\iota$ is
+\begin{align}
+    \iota(n) = \Big(\frac{s\beta (1+g)\bar\nu}{(r+\delta)\varphi^{1/s}}\Big)^\frac{s}{1-s}n.
+\end{align}
+Then, the guess is verified
+\begin{align}
+    \bar{\nu} n = \bar{\pi}n - (r+\delta)\big(\frac{\iota\varphi}{n^{1-s}}\big)^{1/s} + \beta (1+g)\Big\{\iota (1-n\Delta)\bar{\nu} (n+1) + (1-\iota)n\Delta \bar{\nu} (n-1) \\ 
+    + \big[\iota n\Delta+(1-\iota)(1-n\Delta)\big]\bar\nu n \Big\}\\
+    = \bar{\pi}n -(r+\delta) \varphi^\frac{1}{s}\Big(\frac{s\beta (1+g)\bar\nu}{(r+\delta)\varphi^{1/s}}\Big)^\frac{1}{1-s}n + \Big(\frac{s\beta (1+g)\bar\nu}{(r+\delta)\varphi^{1/s}}\Big)^\frac{s}{1-s}n \bar{\nu} + n\bar{\nu}(1-\Delta).\\
+    \bar{\nu} = \bar{\pi} -(r+\delta) \varphi^\frac{1}{s}\Big(\frac{s\beta (1+g)\bar\nu}{(r+\delta)\varphi^{1/s}}\Big)^\frac{1}{1-s} + \Big(\frac{s\beta (1+g)\bar\nu}{(r+\delta)\varphi^{1/s}}\Big)^\frac{s}{1-s} \bar{\nu} + \bar{\nu}(1-\Delta).
+\end{align}
+The value function of the firm with no line is 
+\begin{align}
+    \bar{V}(0) = \beta\Big(-(r+\delta)^2 (\iota^0)^\frac{1}{s^0}\varphi^0 + \iota^0(1+g)\bar\nu\Big) - T^0.
+\end{align}
+And the optimal innovation is 
+\begin{align}
+    \iota^0 = \Big(\frac{(1+g)\bar \nu}{(r+\delta)^2\varphi^0}\Big)^\frac{s^0}{1-s^0}.
+\end{align}
+\textbf{Entrant}\\
+The value function of the entrant is 
+\begin{align}
+    \bar{V}^e = -(r+\delta)(\iota^e)^\frac{1}{s^e}\varphi^e + \iota^e \beta (1+g) \bar \nu.
+\end{align}
+The optimal innovation of the entrant is
+\begin{align}
+    \iota^e = \Big(\frac{\beta (1+g)\bar \nu}{(r+\delta)\varphi^e}\Big)^\frac{s^e}{1-s^e}.
+\end{align}
+
+\subsection{Equilibrium Conditions}
+\textbf{Creative Destruction}\\
+\begin{align}
+    \Delta = \frac{\sum_{n=1}^\infty \iota(n)M(n)}{\sum_{n=1}^\infty M(n)}+ \iota^e + \iota^0 \frac{M(0)}{\sum_{n=1}^{\infty}M(n)}
+\end{align}
+\textbf{Size Distribution of Firms}\\
+Steady state distribution satisfies
+\begin{align}
+    \dot{M}(0) = (1-\iota(1))\Delta M(1) - M(0) = 0.
+\end{align}
+\begin{align}
+    \dot{M}(1) = \iota^0 M(0) + \iota^e+(1-\iota(2))2\Delta M(2)-\big(\iota(1)(1-\Delta)+ (1-\iota(1))\Delta \big)M(1) = 0.
+\end{align}
+and for $n\geq 2$,
+\begin{align}
+    \dot{M}(n) = \iota(n-1)(1-(n-1)\Delta)M(n-1)+(1-\iota(n+1))(n+1)\Delta M(n+1) - (\iota(n)(1-n\Delta) + (1-\iota(n))n \Delta )M(n) =0.
+\end{align}
+
+\textbf{Growth rate}
+\begin{align}
+g = (1+\sigma) \Delta, r^h = \frac{(1+g)^\gamma }{\beta} - 1
+\end{align}
+\textbf{Capital Market Clearing}\\
+\begin{align}
+    \bar{K} = \int_0^1 \bar{k} + \bar{k^R} di + \bar{k^e} + \frac{M(0)\bar{k^0}}{1+g}.
+\end{align}
+\textbf{Interest Rate Condition}\\
+\begin{align}
+    (1+r^h)\bar{K} = (1+r)\Big\{\int_0^1 \bar{k}+ \bar{k^R} di + \bar{k^e} \Big\} + \iota^0(1+r)^2 \frac{M(0)\bar{k}^0}{1+g}.
+\end{align}
+\textbf{Goods Market Clearing}\\
+\begin{align}
+    \bar{Y} + \bar{T} = \bar{C} + (1+g)\bar{K}.
+\end{align}
+
+
+
+\subsection{BGP}
+
+Definition of BGP equilibrium
+\begin{enumerate}
+    \item Given $\{r_t, \bar{Y}_t, \bar{T}_t\}$, reperesentative satisfies the following Euler equation
+    \begin{align}
+        (1+r)\beta = (1+g)^\gamma.
+    \end{align}
+    \item Given $\{p_i\}^\infty$,for all $t$, final good producer maximizes the profit
+    \begin{align}
+        \bar{\Pi}_t = \exp (\int_0^1 \ln \bar{q_i}^\alpha \bar{y_i}^{1-\alpha} di) -\int_0^1 p_i \bar{y_i} di.
+    \end{align}
+    \item Given $\{r, \bar{Y}, \Delta\}$, intermediate producers with $n$ ownership of lines maximize the sum of profits, according to the following Bellman equation
+    \begin{align}
+        \bar{V}(n) = \max_{\iota}\bigg\{\bar{\pi} - \big(\frac{\iota\varphi}{n^{1-s}}\big)^{1/(1-s)} + \beta (1+g)\Big\{\iota (1-n\Delta)\bar{V}(n+1) + (1-\iota)n\Delta \bar{V}(n-1) \\ 
+        + \big[\iota n\Delta+(1-\iota)(1-n\Delta)\big]\bar{V}(n) \Big\}
+        \bigg\}.
+    \end{align}
+    \item $\{r, r^h\}$ is determined by the capital market clearing condition
+    \begin{align}
+        \bar{K} = \int_0^1 \bar{k} + \bar{k^R} di + \bar{k^e} + \frac{M(0)\bar{k^0}}{1+g}.
+    \end{align}
+    and the interest condition
+    \begin{align}
+        (1+r^h)\bar{K} = (1+r)\Big\{\int_0^1 \bar{k}+ \bar{k^R} di + \bar{k^e} \Big\} + \iota^0(1+r)^2 \frac{M(0)\bar{k}^0}{1+g}.
+    \end{align}
+    \item Goods market clears as
+    \begin{align}
+        \bar{Y} + \bar{T} = \bar{C} + (1+g)\bar{K}.
+    \end{align}
+
+\end{enumerate}
+\clearpage
+\section{Steps of Numerical Analysis}
+\subsection{BGP}
+\textbf{Parametes}
+\begin{itemize}
+    \item 
+\end{itemize}
+
+\textbf{Computation}
+\begin{itemize}
+    \item Find the equilibrium Creative Destruction rate $\Delta$.
+    \begin{itemize}
+        \item Solve for $\bar{\nu}$
+        \begin{align}
+            \bar{\nu} = \bar{\pi} -(r+\delta) \varphi^\frac{1}{s}\Big(\frac{s\beta (1+g)\bar\nu}{(r+\delta)\varphi^{1/s}}\Big)^\frac{1}{1-s} + \Big(\frac{s\beta (1+g)\bar\nu}{(r+\delta)\varphi^{1/s}}\Big)^\frac{s}{1-s} \bar{\nu} + \bar{\nu}(1-\Delta)
+        \end{align}
+        \item Plug-in $\bar{\nu}$ to obtain
+        \begin{align}
+            \iota(n) = \Big(\frac{s\beta (1+g)\bar\nu}{(r+\delta)\varphi^{1/s}}\Big)^\frac{s}{1-s}n.\\
+            \iota^0 = \Big(\frac{(1+g)\bar \nu}{(r+\delta)^2\varphi^0}\Big)^\frac{s^0}{1-s^0}.\\
+            \iota^e = \Big(\frac{\beta (1+g)\bar \nu}{(r+\delta)\varphi^e}\Big)^\frac{s^e}{1-s^e}.
+        \end{align}
+        \item Using $\iota$s and $\Delta$, solve for the size distribution
+        \begin{align}
+            \dot{M}(0) &= (1-\iota(1))\Delta M(1) - M(0) = 0.\\
+            \dot{M}(1) &= \iota^0 M(0) + \iota^e+(1-\iota(2))2\Delta M(2)-\big(\iota(1)(1-\Delta)+ (1-\iota(1))\Delta \big)M(1) = 0.\\
+            \dot{M}(n) &= \iota(n-1)(1-(n-1)\Delta)M(n-1)+(1-\iota(n+1))(n+1)\Delta M(n+1) \\
+            &- (\iota(n)(1-n\Delta) + (1-\iota(n))n \Delta )M(n) =0. for n\geq 2.
+        \end{align}
+        \item Compute $\Delta$ by
+        \begin{align}
+            \Delta = \frac{\sum_{n=1}^\infty \iota(n)M(n)}{\sum_{n=1}^\infty M(n)}+ \iota^e + \iota^0 \frac{M(0)}{\sum_{n=1}^{\infty}M(n)}
+        \end{align}
+        and compare this with the gueesed one until they coincide.
+    \end{itemize}
+    \item Using $\Delta$, 
+    \begin{align}
+        g = (1+\sigma) \Delta, \\
+        r^h = \frac{(1+g)^\gamma }{\beta} - 1.
+    \end{align}
+    \item 
+\end{itemize}
+
 
 
 \end{document}
